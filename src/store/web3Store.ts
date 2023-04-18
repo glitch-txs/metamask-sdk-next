@@ -9,7 +9,7 @@ interface IWeb3Store {
     provider: any
     address: string
     chainId: number | string
-    initMMSDK: ()=> void
+    initMMSDK: (force?: boolean)=> void
     connectMM: ()=> void
 }
 
@@ -20,9 +20,9 @@ export const web3Store = create<IWeb3Store>()((set, get) => ({
     address: '',
     chainId: '',
     // initMMSDK is the callback Fn for useEffect
-    initMMSDK: ()=>{
+    initMMSDK: (force = false)=>{
         const MMSDK = new MetaMaskSDK({
-            forceInjectProvider: false,
+            forceInjectProvider: force,
             shouldShimWeb3: false,
         })
         const provider = MMSDK.getProvider()

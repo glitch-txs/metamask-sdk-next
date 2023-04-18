@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 
-type ConnectInfo = {
-    chainId: string
-}
-
 type Info = {
     chainId: number | string
     address: string
@@ -37,8 +33,6 @@ export default function EventsMetaMask(provider: any){
 
         return ()=> removeEventsMetamask(provider)
     },[provider])
-
-    if(!provider) return info
 
     return info
 }

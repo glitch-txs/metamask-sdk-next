@@ -22,6 +22,10 @@ export const web3Store = create<IWeb3Store>()((set, get) => ({
     // initMMSDK is the callback Fn for useEffect
     initMMSDK: (force = false)=>{
         const MMSDK = new MetaMaskSDK({
+            dappMetadata:{
+                name: 'My Dapp',
+                url: 'urldapp.com'
+            },
             forceInjectProvider: force,
             shouldShimWeb3: false,
         })
